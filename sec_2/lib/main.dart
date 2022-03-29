@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
+import 'package:sec_2/recipe_list_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const RecipeApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class RecipeApp extends StatelessWidget {
+  const RecipeApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DetailPage(),
+      home: RecipeListScreen(),
     );
   }
 }
