@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sec_2/recipe_list_screen.dart';
+import 'package:sec_2/common_widgets_screen.dart';
+import 'package:sec_2/stack_demo.dart';
 
 void main() {
   runApp(const RecipeApp());
@@ -16,56 +17,7 @@ class RecipeApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: RecipeListScreen(),
-    );
-  }
-}
-
-class DetailPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return DetailPageState();
-  }
-}
-
-class DetailPageState extends State {
-  int count = 5;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "You pressed the button $count times",
-              style: TextStyle(fontSize: 30),
-            ),
-            if (count % 2 == 0) Text("Even"),
-            Text(count % 2 == 0 ? "Even" : "Odd"),
-            Container(
-              width: 100,
-              height: 100,
-              color: Color(0xFFF00000),
-              child: Center(
-                child: Text(
-                  "Hello",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(count % 2 == 0 ? Icons.add : Icons.phone),
-        onPressed: () {
-          setState(() {
-            count++;
-          });
-        },
-      ),
+      home: StackDemoScreen(),
     );
   }
 }
