@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sec_3/common_widgets.dart';
-import 'package:sec_3/stack_demo.dart';
+import 'package:sec_3/scaffold_props.dart';
 
 void main() {
   runApp(const RecipeApp());
@@ -17,7 +16,7 @@ class RecipeApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: StackDemoScreen(),
+      home: ScaffoldPropsScreen(),
     );
   }
 }
