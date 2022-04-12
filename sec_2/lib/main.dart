@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sec_2/common_widgets_screen.dart';
 import 'package:sec_2/stack_demo.dart';
 
 void main() {
