@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sec_2/recipe_list_screen.dart';
+import 'package:sec_2/first_screen.dart';
+import 'package:sec_2/second_screen.dart';
 
 void main() {
   runApp(const RecipeApp());
@@ -16,56 +17,40 @@ class RecipeApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: RecipeListScreen(),
-    );
-  }
-}
+      // initialRoute: '/firstScreen',
+      // routes: {
+      //   '/firstScreen': (BuildContext context) => FirstScreen(),
+      //   '/secondScreen': (BuildContext context) => SecondScreen(),
+      // },
+      onGenerateRoute: (RouteSettings settings) {
+        MaterialPageRoute wrap(Widget screen) {
+          return MaterialPageRoute(
+            builder: (_) {
+              return screen;
+            },
+          );
+        }
 
-class DetailPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return DetailPageState();
-  }
-}
+        print("name is ${settings.name}");
 
-class DetailPageState extends State {
-  int count = 5;
+        if (settings.name == '/firstScreen' || settings.name == '/') {
+          return wrap(FirstScreen());
+        }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "You pressed the button $count times",
-              style: TextStyle(fontSize: 30),
+        final url = Uri.parse(settings.name!);
+
+        if (url.pathSegments.first == 'secondScreen' &&
+            url.pathSegments.length == 3) {
+          return wrap(
+            SecondScreen(
+              title: url.pathSegments[1],
+              buttonText: url.pathSegments.last,
             ),
-            if (count % 2 == 0) Text("Even"),
-            Text(count % 2 == 0 ? "Even" : "Odd"),
-            Container(
-              width: 100,
-              height: 100,
-              color: Color(0xFFF00000),
-              child: Center(
-                child: Text(
-                  "Hello",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(count % 2 == 0 ? Icons.add : Icons.phone),
-        onPressed: () {
-          setState(() {
-            count++;
-          });
-        },
-      ),
+          );
+        }
+
+        return wrap(FirstScreen());
+      },
     );
   }
 }
